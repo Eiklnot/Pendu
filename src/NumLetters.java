@@ -6,7 +6,7 @@ public class NumLetters {
         this.randomWord = randomWord;
     }
 
-    public static String get_lines(String randomWord) {
+    public String get_lines(String randomWord) {
         String lines = randomWord;
         char ch = '_';
 
