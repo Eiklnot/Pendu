@@ -6,10 +6,7 @@ import java.util.Collections;
 
 
 public class CSVHandler {
-    private String filePath;
-
     public CSVHandler(String filePath) {
-        this.filePath = filePath;
     }
 
     public String getRandomWord(String filePath) {
