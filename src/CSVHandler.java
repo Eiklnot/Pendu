@@ -12,13 +12,12 @@ public class CSVHandler {
         this.filePath = filePath;
     }
 
-    public String getRandomWord() {
+    public String getRandomWord(String filePath) {
         ArrayList<String> words = new ArrayList<>();
         try {
-            BufferedReader br = new BufferedReader(new FileReader("/home/eiklnot/Desktop/Computer Science/java/java_project/Pendu/words.csv"));
+            BufferedReader br = new BufferedReader(new FileReader(filePath));
             String line;
             while ((line = br.readLine()) != null) {
-                // Do something with each line of the CSV file
                 words.add(line);
             }
             br.close();
@@ -26,7 +25,7 @@ public class CSVHandler {
             e.printStackTrace();
         }
         Collections.shuffle(words);
-        
+
         return words.get(0);   
     }
 }

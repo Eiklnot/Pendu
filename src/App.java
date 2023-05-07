@@ -1,9 +1,18 @@
+//import java.util.Scanner;
+
 public class App {
     public static void main(String[] args) throws Exception {
-        CSVHandler csvHandler = new CSVHandler("path/to/your/csv/file.csv");
-        String randomWord = csvHandler.getRandomWord();
+        //Scanner scanner = new Scanner(System.in); 
+        
+        CSVHandler csvHandler = new CSVHandler("/home/eiklnot/Desktop/Computer Science/java/java_project/Pendu/words.csv");
+        String randomWord = csvHandler.getRandomWord("/home/eiklnot/Desktop/Computer Science/java/java_project/Pendu/words.csv");
+
         NumLetters numLetters = new NumLetters(randomWord);
-        System.out.println("Random word: " + numLetters.get_lines(randomWord));
+        String chara = numLetters.get_lines(randomWord);
+        
+        System.out.println("Word: " + randomWord);
+        System.out.println("Word: " + chara);
+        //char guess = scanner.next().charAt(0);
 
 
     }
