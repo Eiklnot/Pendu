@@ -10,13 +10,15 @@ public class App {
             NumLetters numLetters = new NumLetters(randomWord);
             String chara = numLetters.get_lines(randomWord);
             
-            char g = scanner.next().charAt(0);
-            Guess guess = new Guess(randomWord, chara, g);
-            String yGuess = guess.get_input(randomWord, chara, g);
+            
+            
 
             
             System.out.println("Word: " + randomWord);
             System.out.println("Word: " + chara);
+            char g = scanner.next().charAt(0);
+            Guess guess = new Guess(randomWord, chara, g);
+            String yGuess = guess.get_input(randomWord, chara, g);
             System.out.println("After guess : " + yGuess);
         }
     }
