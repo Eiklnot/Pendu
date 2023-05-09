@@ -1,19 +1,20 @@
-//import java.util.Scanner;
-//import java.util.ArrayList;
-//
-//public class Guess {
-//    
-//    String randomWord;
-//    
-//    public Guess (String randomWord) {
-//        this.randomWord = randomWord;
-//    }
-//
-//    public char get_input() {
-//
-//        Scanner scanner = new Scanner(System.in);
-//        char yGuess = scanner.next().charAt(1);
-//        return yGuess;
-//
-//    }
-//}
+
+public class Guess {
+    
+    
+    public Guess(String randomWord, String lines, char guess) {
+    }
+
+    public String get_input(String randomWord, String lines, char guess) {
+
+        char[] arrlines = lines.toCharArray();
+        for (int i = 0; i < lines.length(); i++) {
+            if(randomWord.charAt(i) == guess){
+                arrlines[i] = guess;
+            }
+        }
+        lines = new String(arrlines);
+        return lines;
+
+    }
+}
