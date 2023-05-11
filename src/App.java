@@ -19,12 +19,13 @@ public class App {
             do {
 
                 System.out.println("Word: " + chara);
+                System.out.println("Guess");
+                String temp = chara;
                 char g = scanner.next().charAt(0);
                 Guess guess = new Guess(randomWord, chara, g);
-                System.out.println("Guess");
                 String yGuess = guess.get_input(randomWord, chara, g);
 
-                if (yGuess.equals("wrong")){
+                if (temp.equals(yGuess)){
                     System.out.println(ascii.get_Ascii(life));
                     life++;
                 }else{
