@@ -12,13 +12,28 @@ public class App {
             
             
             System.out.println("Word: " + randomWord);
-            System.out.println("Word: " + chara);
-            
-            char g = scanner.next().charAt(0);
-            Guess guess = new Guess(randomWord, chara, g);
-            String yGuess = guess.get_input(randomWord, chara, g);
 
-            System.out.println("After guess : " + yGuess);
+            int life =0;
+            Ascii ascii = new Ascii();
+
+            do {
+
+                System.out.println("Word: " + chara);
+                char g = scanner.next().charAt(0);
+                Guess guess = new Guess(randomWord, chara, g);
+                System.out.println("Guess");
+                String yGuess = guess.get_input(randomWord, chara, g);
+
+                if (yGuess.equals("wrong")){
+                    System.out.println(ascii.get_Ascii(life));
+                    life++;
+                }else{
+                    chara = yGuess;
+                    System.out.println("After guess : " + chara);
+                }
+            }
+            while (life < 10);
+
         }
     }
 }
