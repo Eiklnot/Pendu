@@ -32,8 +32,9 @@ public class App {
                     chara = yGuess;
                     System.out.println("After guess : " + chara);
                 }
+
             }
-            while (life < 10);
+            while (life <= 9);
 
         }
     }

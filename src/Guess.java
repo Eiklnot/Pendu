@@ -7,13 +7,13 @@ public class Guess {
 
     public String get_input(String randomWord, String lines, char guess) {
 
-        char[] arrlines = lines.toCharArray();
+        char[] arrLines = lines.toCharArray();
         for (int i = 0; i < lines.length(); i++) {
             if(randomWord.charAt(i) == guess){
-                arrlines[i] = guess;
+                arrLines[i] = guess;
             }
         }
-        lines = new String(arrlines);
+        lines = new String(arrLines);
         return lines;
 
     }
