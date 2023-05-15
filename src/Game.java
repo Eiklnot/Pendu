@@ -1,3 +1,4 @@
+import java.io.IOException;
 import java.util.Scanner;
 
 public class Game {
@@ -13,13 +14,30 @@ public class Game {
         scanner = new Scanner(System.in);
     }
 
-    public void run() {
-        System.out.println("Word: " + randomWord);
+    public static void clearConsole() {
+        try {
+            final String os = System.getProperty("os.name");
 
-        int life =0;
+            if (os.contains("Windows")) {
+                new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+            } else {
+                System.out.print("\033[H\033[2J");
+                System.out.flush();
+            }
+        } catch (final IOException | InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void run() {
+        int win = 0;
+        int life = 0;
         Ascii ascii = new Ascii();
 
-        do {
+        while (life <= 8 || win == randomWord.length()) {
+            clearConsole();
+            System.out.println("Word: " + randomWord);
+            System.out.println(ascii.get_Ascii(life));
 
             System.out.println("Word: " + chara);
             System.out.println("Guess");
@@ -28,18 +46,26 @@ public class Game {
             Guess guess = new Guess(randomWord, chara, g);
             String yGuess = guess.get_input(randomWord, chara, g);
 
-            if (temp.equals(yGuess)){
-                System.out.println(ascii.get_Ascii(life));
+            if (temp.equals(yGuess)) {
                 life++;
-            }else{
+                if (life == 8) {
+                    clearConsole();
+                    System.out.println(ascii.get_Ascii(life));
+
+                }
+            } else {
                 chara = yGuess;
                 System.out.println("After guess : " + chara);
+                System.out.println(randomWord.length());
+                win++;
+                if (win == randomWord.length()) {
+                    System.out.println("Vous avez gagnez");
+                }
             }
 
-        } while (life < 9);
+        }
 
         scanner.close();
     }
+
 }
-
-
