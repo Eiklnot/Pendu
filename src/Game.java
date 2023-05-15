@@ -34,7 +34,7 @@ public class Game {
         int life = 0;
         Ascii ascii = new Ascii();
 
-        while (life <= 8 || win == randomWord.length()) {
+        do {
             clearConsole();
             System.out.println("Word: " + randomWord);
             System.out.println(ascii.get_Ascii(life));
@@ -42,16 +42,22 @@ public class Game {
             System.out.println("Word: " + chara);
             System.out.println("Guess");
             String temp = chara;
+            System.out.println(randomWord.length());
             char g = scanner.next().charAt(0);
             Guess guess = new Guess(randomWord, chara, g);
             String yGuess = guess.get_input(randomWord, chara, g);
 
+            clearConsole();
+            System.out.println("Word: " + randomWord);
+            System.out.println(ascii.get_Ascii(life));
+
             if (temp.equals(yGuess)) {
+                System.out.println(win);
+                System.out.println(randomWord.length());
                 life++;
                 if (life == 8) {
                     clearConsole();
                     System.out.println(ascii.get_Ascii(life));
-
                 }
             } else {
                 chara = yGuess;
@@ -63,7 +69,7 @@ public class Game {
                 }
             }
 
-        }
+        } while (life < 8 || win == randomWord.length());
 
         scanner.close();
     }
