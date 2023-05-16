@@ -33,43 +33,53 @@ public class Game {
         int win = 0;
         int life = 0;
         Ascii ascii = new Ascii();
+        boolean choice = true;
+        while (choice == true) {
 
-        do {
-            clearConsole();
-            System.out.println("Word: " + randomWord);
-            System.out.println(ascii.get_Ascii(life));
+            do {
+                clearConsole();
+                System.out.println("Word: " + randomWord);
+                System.out.println(ascii.get_Ascii(life));
 
-            System.out.println("Word: " + chara);
-            System.out.println("Guess");
-            String temp = chara;
-            System.out.println(randomWord.length());
-            char g = scanner.next().charAt(0);
-            Guess guess = new Guess(randomWord, chara, g);
-            String yGuess = guess.get_input(randomWord, chara, g);
-
-            clearConsole();
-            System.out.println("Word: " + randomWord);
-            System.out.println(ascii.get_Ascii(life));
-
-            if (temp.equals(yGuess)) {
-                System.out.println(win);
+                System.out.println("Word: " + chara);
+                System.out.println("Guess");
+                String temp = chara;
                 System.out.println(randomWord.length());
-                life++;
-                if (life == 8) {
-                    clearConsole();
-                    System.out.println(ascii.get_Ascii(life));
+                char g = scanner.next().charAt(0);
+                Guess guess = new Guess(randomWord, chara, g);
+                String yGuess = guess.get_input(randomWord, chara, g);
+
+                clearConsole();
+                System.out.println("Word: " + randomWord);
+                System.out.println(ascii.get_Ascii(life));
+
+                if (temp.equals(yGuess)) {
+                    life++;
+                    if (life == 8) {
+                        clearConsole();
+                        System.out.println(ascii.get_Ascii(life));
+                    }
+                } else {
+                    if (win == randomWord.length()) {
+                        System.out.println("Vous avez gagner");
+                    }
+                    chara = yGuess;
+                    System.out.println("After guess : " + chara);
+                    win++;
+
                 }
+
+            } while (life < 8 || win == randomWord.length());
+            System.out.println("Play again?\n1- play\n2- quit");
+            int inp = scanner.nextInt();
+            if (inp == 1) {
+                Game game = new Game("words.csv");
+                game.run();
             } else {
-                chara = yGuess;
-                System.out.println("After guess : " + chara);
-                System.out.println(randomWord.length());
-                win++;
-                if (win == randomWord.length()) {
-                    System.out.println("Vous avez gagnez");
-                }
+                System.out.println("Leaving the program");
+                choice = false;
             }
-
-        } while (life < 8 || win == randomWord.length());
+        }
 
         scanner.close();
     }
