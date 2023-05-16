@@ -30,11 +30,10 @@ public class Game {
     }
 
     public void run() {
-        int win = 0;
         int life = 0;
         Ascii ascii = new Ascii();
         boolean choice = true;
-        while (choice == true) {
+        while (choice) {
 
             do {
                 clearConsole();
@@ -60,16 +59,18 @@ public class Game {
                         System.out.println(ascii.get_Ascii(life));
                     }
                 } else {
-                    if (win == randomWord.length()) {
-                        System.out.println("Vous avez gagner");
-                    }
                     chara = yGuess;
                     System.out.println("After guess : " + chara);
-                    win++;
-
                 }
 
-            } while (life < 8 || win == randomWord.length());
+            } while (life < 8 && !randomWord.equals(chara)); // Modifiez la condition ici
+
+            if (randomWord.equals(chara)) {
+                System.out.println("Vous avez gagner");
+            } else {
+                System.out.println("Vous avez perdu. Le mot était : " + randomWord);
+            }
+
             System.out.println("Play again?\n1- play\n2- quit");
             int inp = scanner.nextInt();
             if (inp == 1) {
@@ -83,5 +84,4 @@ public class Game {
 
         scanner.close();
     }
-
 }

@@ -13,7 +13,7 @@ public class App {
                     Game game = new Game("words.csv");
                     game.run();
                 } else {
-                    System.out.println("Leaving the program");
+                    System.out.println("Leaving the game");
                     opt = false;
                 }
             }
