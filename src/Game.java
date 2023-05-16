@@ -44,7 +44,7 @@ public class Game {
                 System.out.println("Word: " + chara);
                 System.out.println("Guess");
                 String temp = chara;
-                System.out.println(randomWord.length());
+
                 char g = scanner.next().charAt(0);
                 Guess guess = new Guess(randomWord, chara, g);
                 String yGuess = guess.get_input(randomWord, chara, g);
