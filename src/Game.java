@@ -39,7 +39,6 @@ public class Game {
                 clearConsole();
                 System.out.println("Word: " + randomWord);
                 System.out.println(ascii.get_Ascii(life));
-
                 System.out.println("Word: " + chara);
                 System.out.println("Guess");
                 String temp = chara;
