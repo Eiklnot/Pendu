@@ -14,6 +14,7 @@ public class Game {
         scanner = new Scanner(System.in);
     }
 
+    // methode pour clear le terminale
     public static void clearConsole() {
         try {
             final String os = System.getProperty("os.name");
